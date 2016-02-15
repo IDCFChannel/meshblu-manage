@@ -29,10 +29,11 @@ app.use(cors());
 app.use(favicon(__dirname + '/../../images/favicon.ico'));
 app.use(auth, express.static(path.join(__dirname,'..','..','dist')));
 app.use(express.static(path.join(__dirname,'..','..','dist')));
+router.use(auth);
 app.use('/api', router);
 
-const hostFilePath = path.join(__dirname, '..','..','data','host.json');
-const devicesFilePath = path.join(__dirname, '..','..','data','devices.json');
+const hostFilePath = path.join(__dirname, '/data','host.json');
+const devicesFilePath = path.join(__dirname, '/data','devices.json');
 const devicesJson = require(devicesFilePath);
 const hostJson = require(hostFilePath);
 
