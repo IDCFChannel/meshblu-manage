@@ -32,8 +32,8 @@ app.use(express.static(path.join(__dirname,'..','..','dist')));
 router.use(auth);
 app.use('/api', router);
 
-const hostFilePath = path.join(__dirname, '/data','host.json');
-const devicesFilePath = path.join(__dirname, '/data','devices.json');
+const hostFilePath = '/data/host.json';
+const devicesFilePath = '/data/devices.json';
 const devicesJson = require(devicesFilePath);
 const hostJson = require(hostFilePath);
 
