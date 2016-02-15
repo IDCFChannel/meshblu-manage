@@ -10,14 +10,17 @@ const fs = require('fs');
 const _ = require('lodash');
 const router = express.Router();
 
+const basicFilePath = '/data/basic.json';
+const basicJson = require(basicFilePath);
+
 const auth = function (req, res, next) {
   let user = basicAuth(req);
   if (!user || !user.name || !user.pass) {
     res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
     return res.sendStatus(401);
   }
-
-  if (user.name === 'idcf' && user.pass === 'mythings') {
+  if (user.name === basicJson.user &&
+      user.pass === basicJson.password) {
     next();
   } else {
     res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
